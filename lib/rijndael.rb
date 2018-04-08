@@ -36,12 +36,10 @@ class Rijndael
     
     def texto=(t)
         @texto=rellenar_matriz(t)
-        puts "#{@texto}"
     end
     
     def clave=(c)
         @clave=rellenar_matriz(c)
-        puts "#{@clave}"
     end
     
     def matriz(x,y)
