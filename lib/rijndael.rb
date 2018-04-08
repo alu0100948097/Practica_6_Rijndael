@@ -1,4 +1,5 @@
 class Rijndael
+    
     def initialize
 		@S=[['63','7c','77','7b','f2','6b','6f','c5','30','01','67','2b','fe','d7','ab','76'],
         ['ca','82','c9','7d','fa','59','47','f0','ad','d4','a2','af','9c','a4','72','c0'],
@@ -16,7 +17,33 @@ class Rijndael
         ['70','3e','b5','66','48','03','f6','0e','61','35','57','b9','86','c1','1d','9e'],
         ['e1','f8','98','11','69','d9','8e','94','9b','1e','87','e9','ce','55','28','df'],
         ['8c','a1','89','0d','bf','e6','42','68','41','99','2d','0f','b0','54','bb','16']]
+        @texto=matriz(4,4)
+        @clave=matriz(4,4)
 	end
+    
+    def rellenar_matriz(t)
+        temp=matriz(4,4)
+        k=0
+        t=t.scan(/.{2}/)
+        for i in 0..3
+            for j in 0..3
+                temp[j][i]=t[k]
+                k=k+1
+            end
+        end
+        return temp
+    end
+    
+    def texto=(t)
+        @texto=rellenar_matriz(t)
+        puts "#{@texto}"
+    end
+    
+    def clave=(c)
+        @clave=rellenar_matriz(c)
+        puts "#{@clave}"
+    end
+    
     def matriz(x,y)
         return Array.new(x){Array.new(y,0)}
     end
