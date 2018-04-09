@@ -101,6 +101,14 @@ class Rijndael
         end
     end
     
+    def rotWord(m,j)
+        t=m[0][j]
+        for i in 0..2
+            m[i][j]=m[i+1][j]
+        end
+        m[3][j]=t
+    end
+    
     def multiplicar(a,b)
         resultado=""
         if (a!='1')
