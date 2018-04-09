@@ -1,3 +1,4 @@
+require_relative 'multiplicacion'
 class Rijndael
     
     def initialize
