@@ -21,6 +21,8 @@ class Rijndael
         @texto=matriz(4,4)
         @clave=matriz(4,4)
         @matriz_mix=[['2','3','1','1'], ['1','2','3','1'], ['1','1','2','3'], ['3','1','1','2']]
+        @multiplicacion=Multiplicacion.new
+        @multiplicacion.algoritmo="1B"
 	end
     
     def rellenar_matriz(t)
