@@ -45,11 +45,38 @@ class Rijndael
     def matriz(x,y)
         return Array.new(x){Array.new(y,0)}
     end
+    
     def subBytes
         for i in 0..3
             for j in 0..3
                 @texto[j][i]=@S[@texto[j][i][0].hex][@texto[j][i][1].hex]
             end
         end
+    end
+    
+    def shiftRow
+        t=[]
+        t.push(@texto[1][0])
+        for i in 0..2
+            @texto[1][i]=@texto[1][i+1]
+        end
+        @texto[1][3]=t[0]
+        t.clear
+        t.push(@texto[2][0])
+        t.push(@texto[2][1])
+        for i in 0..1
+            @texto[2][i]=@texto[2][i+2]
+        end
+        @texto[2][2]=t[0]
+        @texto[2][3]=t[1]
+        t.clear
+        t.push(@texto[3][0])
+        t.push(@texto[3][1])
+        t.push(@texto[3][2])
+        @texto[3][0]=@texto[3][3]
+        @texto[3][1]=t[0]
+        @texto[3][2]=t[1]
+        @texto[3][3]=t[2]
+        t.clear
     end
 end
