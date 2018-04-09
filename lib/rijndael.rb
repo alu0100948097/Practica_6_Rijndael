@@ -83,6 +83,24 @@ class Rijndael
         @texto[3][3]=t[2]
         t.clear
     end
+    
+    def mixColumn
+        temp=matriz(4,4)
+        for i in 0..3
+            for j in 0..3
+                a=XOR(multiplicar(@matriz_mix[j][0],@texto[0][i]),multiplicar(@matriz_mix[j][1],@texto[1][i]))
+                b=XOR(multiplicar(@matriz_mix[j][2],@texto[2][i]),multiplicar(@matriz_mix[j][3],@texto[3][i]))
+                c=XOR(a,b).to_i(2).to_s(16)
+                temp[j][i]=c.rjust(2,'0')
+            end
+        end
+        for i in 0..3
+            for j in 0..3
+                @texto[i][j]=temp[i][j]
+            end
+        end
+    end
+    
     def multiplicar(a,b)
         resultado=""
         if (a!='1')
