@@ -83,6 +83,19 @@ class Rijndael
         @texto[3][3]=t[2]
         t.clear
     end
+    def multiplicar(a,b)
+        resultado=""
+        if (a!='1')
+            @multiplicacion.primer=a
+            @multiplicacion.segundo=b
+            resultado=@multiplicacion.multiplicar
+        else
+            @multiplicacion.segundo=b
+            resultado=@multiplicacion.segundo
+        end
+        return resultado
+    end
+    
     def XOR(a,b)
         temp=a.unpack('C*').zip(b.unpack('C*'))
         temp=temp.map {|x,y| x^y}.join
