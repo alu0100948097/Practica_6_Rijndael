@@ -58,6 +58,12 @@ class Rijndael
         end
     end
     
+    def subBytes_clave(m,j)
+        for i in 0..3
+            m[i][j]=@S[m[i][j][0].hex][m[i][j][1].hex]
+        end
+    end
+    
     def shiftRow
         t=[]
         t.push(@texto[1][0])
