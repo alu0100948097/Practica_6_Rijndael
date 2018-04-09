@@ -19,6 +19,7 @@ class Rijndael
         ['8c','a1','89','0d','bf','e6','42','68','41','99','2d','0f','b0','54','bb','16']]
         @texto=matriz(4,4)
         @clave=matriz(4,4)
+        @matriz_mix=[[2,3,1,1], [1,2,3,1], [1,1,2,3], [3,1,1,2]]
 	end
     
     def rellenar_matriz(t)
