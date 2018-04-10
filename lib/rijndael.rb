@@ -172,4 +172,21 @@ class Rijndael
             m_2[i][j_2]=(XOR(m_1[i][j_1].hex.to_s(2).rjust(8,'0'),m_2[i][j_2].hex.to_s(2).rjust(8,'0'))).to_i(2).to_s(16).rjust(2,'0')
         end
     end
+    
+    def texto_string
+        for i in 0..3
+            for j in 0..3
+                print "#{@texto[j][i]}"
+            end
+        end
+    end
+    
+    def clave_string
+        for i in 0..3
+            for j in 0..3
+                print "#{@clave[j][i]}"
+            end
+        end
+    end
+    
 end
