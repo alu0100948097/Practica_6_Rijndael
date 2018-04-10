@@ -134,4 +134,9 @@ class Rijndael
         return temp
     end
     
+    def XOR_c(m_1,m_2,j_1,j_2)
+        for i in 0..3
+            m_2[i][j_2]=(XOR(m_1[i][j_1].hex.to_s(2).rjust(8,'0'),m_2[i][j_2].hex.to_s(2).rjust(8,'0'))).to_i(2).to_s(16).rjust(2,'0')
+        end
+    end
 end
