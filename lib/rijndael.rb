@@ -1,4 +1,6 @@
+require 'colorize'
 require_relative 'multiplicacion'
+
 class Rijndael
     
     def initialize
