@@ -192,3 +192,68 @@ class Rijndael
     end
     
 end
+
+@test=Rijndael.new
+    puts
+    puts "PRÁCTICA: RIJNDAEL"
+    puts
+    print "Introduzca el bloque de texto original: "
+    texto=gets.chomp
+    while texto.empty? || texto.length!=32
+        system "clear"
+        if texto.empty?
+            puts "No se ha introducido bloque de texto".red
+        else
+            puts "El tamaño del bloque introducido es incorrecto".red
+        end
+        puts
+        print "Introduzca el bloque de texto original: "
+        texto=gets.chomp
+    end
+    @test.texto=texto
+    print "Introduzca la clave: "
+    clave=gets.chomp
+    while clave.empty? || clave.length!=32
+        system "clear"
+        if clave.empty?
+            puts "No se ha introducido clave".red
+            else
+            puts "El tamaño de la clave introducida es incorrecta".red
+        end
+        puts
+        print "Introduzca la clave: "
+        clave=gets.chomp
+    end
+    @test.clave=clave
+    puts
+    @test.addroundkey
+    print "R0 (Subclave = "
+    @test.clave_string
+    print ") = "
+    @test.texto_string
+    puts
+    @test.subclaves
+    for i in 0..8
+        @test.subBytes
+        @test.shiftRow
+        @test.mixColumn
+        @test.addroundkey
+        print "R#{i+1} (Subclave = "
+        @test.clave_string
+        print ") = "
+        @test.texto_string
+        puts
+        @test.subclaves
+    end
+    @test.subBytes
+    @test.shiftRow
+    @test.addroundkey
+    print "R10 (Subclave = "
+    @test.clave_string
+    print ") = "
+    @test.texto_string
+    puts
+    print "Bloque de Texto Cifrado: "
+    @test.texto_string
+    puts
+    puts
