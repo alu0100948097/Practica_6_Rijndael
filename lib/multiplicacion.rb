@@ -59,6 +59,10 @@ class Multiplicacion
             end
         end
         
+        if temp.empty?
+            return @segundo
+        end
+        
         temp.reverse!
         
         for i in (0..temp.length-1)
