@@ -120,6 +120,28 @@ class Rijndael
         m[3][j]=t
     end
     
+    def subclaves
+        t=matriz(4,4)
+        for i in 0..3
+            t[i][0]=@clave[i][3]
+        end
+        rotWord(t,0)
+        subBytes_clave(t,0)
+        XOR_c(@clave,t,0,0)
+        XOR_c(@rcon,t,@rcon_i,0)
+        @rcon_i=@rcon_i+1
+        for i in 1..3
+            for j in 0..3
+                t[j][i]=(XOR(@clave[j][i].hex.to_s(2).rjust(8,'0'),t[j][i-1].hex.to_s(2).rjust(8,'0'))).to_i(2).to_s(16).rjust(2,'0')
+            end
+        end
+        for i in 0..3
+            for j in 0..3
+                @clave[i][j]=t[i][j]
+            end
+        end
+    end
+    
     def multiplicar(a,b)
         resultado=""
         if (a!='1')
