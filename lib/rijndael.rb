@@ -112,6 +112,12 @@ class Rijndael
         end
     end
     
+    def addroundkey
+        for i in 0..3
+            XOR_c(@clave,@texto,i,i)
+        end
+    end
+    
     def rotWord(m,j)
         t=m[0][j]
         for i in 0..2
